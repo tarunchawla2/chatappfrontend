@@ -1,0 +1,16 @@
+<div id="chat-room">
+  <h2>{{ username }}</h2>
+  <h4><i *ngIf="isTyping" class="isTyping">typing...</i></h4>
+  <br>
+  <div id="chat-window">
+    <div *ngFor="let item of messageArray">
+      <p [class.userMessage]="item.user.toString() == getLoggedInUser()"
+        [class.secUserMessage]="item.user.toString() != getLoggedInUser()">
+        {{ item.message }}
+        <!-- <img style="padding-right: 0px;" src="../assets/tick.png" alt="avatar" height="18.5px" width="15px"> -->
+      </p>
+    </div>
+  </div>
+  <input (keypress)="typing()" [(ngModel)]="message" name="message" type="text" placeholder="Message" />
+  <button id="send" (click)="sendMessage()">Send</button>
+</div>

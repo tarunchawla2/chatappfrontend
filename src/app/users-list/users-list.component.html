@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-xs-4">
+    <div class="list-group">
+      <span *ngFor="let user of users">
+        <a *ngIf="user.username != authService.getLoggedInUser()" routerLink="chatroom"
+          [queryParams]="{ username: user.username }" class="list-group-item">
+          <img src="../assets/generic-avatar.png" alt="avatar" height="28.5px" width="25px">
+          {{user.username}}
+        </a>
+      </span>
+    </div>
+  </div>
+  <div class="col-xs-7">
+    <router-outlet></router-outlet>
+  </div>
+</div>
